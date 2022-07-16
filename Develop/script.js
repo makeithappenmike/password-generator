@@ -7,9 +7,14 @@ function genPass() {
   // Length between 8 and 128
   let length = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
 
-  if () {
-    
-  }
+  // While the length is not between 8 - 128, don't proceed
+  while (length < 8 || length > 128) {
+    alert("Whoops! Please enter a number between 8 - 128 and try again.");
+    let length = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
+    if (length > 8 && length < 128) {
+      break;
+    }
+  };
 
   // Lowercase character?
   let lowercase = prompt("Would you like to require a lowercase character? (y/n)");
