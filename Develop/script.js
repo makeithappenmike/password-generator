@@ -1,6 +1,10 @@
 // Assignment code here
-let yesNo = [
-  "y", "Y", "n", "N"]
+var yesNo = [
+  "y", "Y", "n", "N"];
+  var alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "0123456789";
+  var symbols = "!@#$%^&*_-+=";
+  var chars = alpha + numbers + symbols;
 
 function genPass() {
   
@@ -87,6 +91,10 @@ function genPass() {
     }
   };
   console.log("Special:", special + "/n");
+
+  // While no character is chosen, don't proceed
+
+  // Log stuff
   console.log("-------------------");
   console.log("Length:", length);
   console.log("Lowercase:", lowercase);
@@ -94,21 +102,28 @@ function genPass() {
   console.log("Numeric:", numeric);
   console.log("Special:", special);
 
-
+  // Trow success message
   alert("Sick! Smash 'OK' to view your password.");
 
 };
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
+function writePassword(length) {
+  // var password = genPass();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
+  for (var i = 0; i <= length; i++) {
+    var randomNumber = Math.floor(Math.random() * chars.length);
+    password += chars.substring(randomNumber, randomNumber +1);
+  }
+
+  document.getElementById("password").value = password;
+  console.log(password);
 
 }
 
