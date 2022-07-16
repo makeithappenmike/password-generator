@@ -6,12 +6,16 @@ function genPass() {
   
   // Length between 8 and 128
   let length = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
+  console.log(length);
 
   // While the length is not between 8 - 128, don't proceed
   while (length < 8 || length > 128) {
+    console.log(length, "is not between 8-128");
     alert("Whoops! Please enter a number between 8 - 128 and try again.");
     let length = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
+    console.log(length, "is not between 8-128");
     if (length > 8 && length < 128) {
+      console.log("length set");
       break;
     }
   };
@@ -21,9 +25,12 @@ function genPass() {
 
   // While the answer is not y, Y, n, or N, don't proceed
   while (lowercase !== "y" || lowercase !== "Y" || lowercase !== "n" || lowercase !== "N") {
+    console.log(lowercase, "is not an option");
     alert("Whoops! Please choose Yes or No (y/n)");
     let lowercase = prompt("Would you like to require a lowercase character? (y/n)");
+    console.log(lowercase, "is not an option");
     if (lowercase === "y" || lowercase === "Y" || lowercase === "n" || lowercase === "N") {
+      console.log("lowercase set");
       break;
     }
   };
@@ -33,9 +40,12 @@ function genPass() {
 
   // While the answer is not y, Y, n, or N, don't proceed
   while (uppercase !== "y" || uppercase !== "Y" || uppercase !== "n" || uppercase !== "N") {
+    console.log(uppercase, "is not an option");
     alert("Whoops! Please choose Yes or No (y/n)");
     let uppercase = prompt("Would you like to require an Uppercase character? (y/n)");
-    if (uppercase === "y" || uppercase === "n" || uppercase === "y" || uppercase === "n") {
+    console.log(uppercase, "is not an option");
+    if (uppercase === "y" || uppercase === "Y" || uppercase === "n" || uppercase === "N") {
+      console.log("uppercase set");
       break;
     }
   };
