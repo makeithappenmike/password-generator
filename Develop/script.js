@@ -6,7 +6,6 @@ var alphaLower = "abcdefghijklmnopqrstuvwxyz";
 var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var symbols = "!@#$%^&*_-+=";
-var chars = alphaUpper + alphaLower + numbers + symbols;
 var pwdOptions = [];
 var finalPassword = "";
 
@@ -35,14 +34,16 @@ function generatePassword() {
   while (!yesNo.includes(lowercase)) {
     alert("Whoops! Please choose Yes or No (y/n)");
     lowercase = prompt("Would you like to require a lowercase character? (y/n)");
-    if (yesNo.includes(lowercase)) {
+    if (lowercase === "y" || lowercase === "Y") {
+      pwdOptions.push(alphaLower);
+      console.log(pwdOptions);
       break;
     }
   };
   
-  if (yes.includes(lowercase)) {
-    pwdOptions.push(alphaLower);
-  }
+  // if (yes.includes(lowercase)) {
+  //   pwdOptions.push(alphaLower);
+  // }
 
   // Uppercase character?
   var uppercase = prompt("Would you like to require an Uppercase character? (y/n)");
@@ -51,14 +52,16 @@ function generatePassword() {
   while (!yesNo.includes(uppercase)) {
     alert("Whoops! Please choose Yes or No (y/n)");
     uppercase = prompt("Would you like to require an Uppercase character? (y/n)");
-    if (yesNo.includes(uppercase)) {
+    if (uppercase === "y" || uppercase === "Y") {
+      pwdOptions.push(alphaUpper);
+      console.log(pwdOptions);
       break;
     }
   };
 
-  if (yes.includes(uppercase)) {
-    pwdOptions.push(alphaUpper);
-  }
+  // if (yes.includes(uppercase)) {
+  //   pwdOptions.push(alphaUpper);
+  // }
 
   // Numeric character?
   var numeric = prompt("Would you like to require a numeric character? (y/n)");
@@ -67,14 +70,16 @@ function generatePassword() {
   while (!yesNo.includes(numeric)) {
     alert("Whoops! Please choose Yes or No (y/n)");
     numeric = prompt("Would you like to require a numeric character? (y/n)");
-    if (yesNo.includes(numeric)) {
+    if (numeric === "y" || numeric === "Y") {
+      pwdOptions.push(numbers);
+      console.log(pwdOptions);
       break;
     }
   };
 
-  if (yes.includes(numeric)) {
-    pwdOptions.push(numbers);
-  }
+  // if (yes.includes(numeric)) {
+  //   pwdOptions.push(numbers);
+  // }
 
   // Special character?
   var special = prompt("Would you like to require a special character? (y/n)");
@@ -83,14 +88,16 @@ function generatePassword() {
   while (!yesNo.includes(special)) {
     alert("Whoops! Please choose Yes or No (y/n)");
     special = prompt("Would you like to require a special character? (y/n)");
-    if (yesNo.includes(special)) {
+    if (special === "y" || special === "Y") {
+      pwdOptions.push(symbols);
+      console.log(pwdOptions);
       break;
     }
   };
 
-  if (yes.includes(special)) {
-    pwdOptions.push(symbols);
-  }
+  // if (yes.includes(special)) {
+  //   pwdOptions.push(symbols);
+  // }
 
   pwdOptions = pwdOptions.join('');
 
@@ -99,6 +106,12 @@ function generatePassword() {
     alert("Whoops! You need to choose at least one character type. Please try again.");
   } else {
 
+    // Create random string from pwdOptions
+    for (var i = 0; i <= pwdLength - 1; i++) {
+      var randomNumber = Math.floor(Math.random() * pwdOptions.length);
+      finalPassword += pwdOptions.substring(randomNumber, randomNumber +1);
+    }
+
     // Log stuff
     console.log("Length:", pwdLength);
     console.log("Lowercase:", lowercase);
@@ -106,13 +119,6 @@ function generatePassword() {
     console.log("Numeric:", numeric);
     console.log("Special:", special);
     console.log("Options:", pwdOptions);
-
-    // Create random string from pwdOptions
-    for (var i = 0; i <= pwdLength - 1; i++) {
-      var randomNumber = Math.floor(Math.random() * pwdOptions.length);
-      finalPassword += pwdOptions.substring(randomNumber, randomNumber +1);
-    }
-
     console.log("Password:", finalPassword);
 
     // Trow success message
