@@ -1,10 +1,13 @@
 // Assignment code here
 var yesNo = [
   "y", "Y", "n", "N"];
-  var alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var numbers = "0123456789";
-  var symbols = "!@#$%^&*_-+=";
-  var chars = alpha + numbers + symbols;
+var alphaLower = "abcdefghijklmnopqrstuvwxyz";
+var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
+var symbols = "!@#$%^&*_-+=";
+var chars = alphaUpper + alphaLower + numbers + symbols;
+var pwdOptions = [];
+var password = "";
 
 function genPass() {
   
@@ -13,20 +16,20 @@ function genPass() {
   alert("You'd like a new password, eh? Let's define the criteria! Smash 'OK' to proceed.");
   
   // Length between 8 and 128
-  var length = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
+  var pwdLength = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
 
   // While the length is not between 8 - 128, don't proceed
-  while (length < 8 || length > 128) {
+  while (pwdLength < 8 || pwdLength > 128) {
     // console.log("Need correction");
     alert("Whoops! Please enter a number between 8 - 128 and try again.");
-    length = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
+    pwdLength = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
     // console.log(length, "is not between 8-128");
-    if (length >= 8 && length <= 128) {
+    if (pwdLength >= 8 && pwdLength <= 128) {
       // console.log("length set to", length);
       break;
     }
   };
-  console.log("Length:", length);
+  console.log("Length:", pwdLength);
 
   // Lowercase character?
   var lowercase = prompt("Would you like to require a lowercase character? (y/n)");
@@ -42,7 +45,12 @@ function genPass() {
       break;
     }
   };
+  
+  if (lowercase === "y" || lowercase === "Y") {
+    pwdOptions.push(alphaLower);
+  }
   console.log("Lowercase:", lowercase);
+  console.log(pwdOptions);
 
   // Uppercase character?
   var uppercase = prompt("Would you like to require an Uppercase character? (y/n)");
@@ -58,6 +66,10 @@ function genPass() {
       break;
     }
   };
+
+  if (uppercase === "y" || uppercase === "Y") {
+    pwdOptions.push(alphaUpper);
+  }
   console.log("Uppercase:", uppercase);
 
   // Numeric character?
@@ -76,6 +88,10 @@ function genPass() {
     }
   };
 
+  if (numeric === "y" || numeric === "Y") {
+    pwdOptions.push(numbers);
+  }
+
   // Special character?
   var special = prompt("Would you like to require a special character? (y/n)");
 
@@ -90,20 +106,37 @@ function genPass() {
       break;
     }
   };
+
+  if (special === "y" || special === "Y") {
+    pwdOptions.push(symbols);
+  }
   console.log("Special:", special + "/n");
+
+  pwdOptions = pwdOptions.join('');
 
   // While no character is chosen, don't proceed
 
   // Log stuff
   console.log("-------------------");
-  console.log("Length:", length);
+  console.log("Length:", pwdLength);
   console.log("Lowercase:", lowercase);
   console.log("Uppercase:", uppercase);
   console.log("Numeric:", numeric);
   console.log("Special:", special);
+  console.log("Options:", pwdOptions);
 
   // Trow success message
   alert("Sick! Smash 'OK' to view your password.");
+
+  console.log("Password:", password);
+
+  // Create random string from pwdOptions
+  for (var i = 0; i <= passwordLength; i++) {
+    var randomNumber = Math.floor(Math.random() * pwdOptions.length);
+    password += pwdOptions.substring(randomNumber, randomNumber +1);
+  }
+
+  console.log("Password:", password);
 
 };
 
@@ -111,21 +144,21 @@ function genPass() {
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword(length) {
+var password = function writePassword(length) {
   // var password = genPass();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+//   passwordText.value = password;
 
-  for (var i = 0; i <= length; i++) {
-    var randomNumber = Math.floor(Math.random() * chars.length);
-    password += chars.substring(randomNumber, randomNumber +1);
-  }
+//   // for (var i = 0; i <= length; i++) {
+//   //   var randomNumber = Math.floor(Math.random() * chars.length);
+//   //   password += chars.substring(randomNumber, randomNumber +1);
+//   // }
+//   console.log(password);
+//   document.getElementById("password").value = password;
+//   console.log(password);
 
-  document.getElementById("password").value = password;
-  console.log(password);
-
-}
+// }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+}
