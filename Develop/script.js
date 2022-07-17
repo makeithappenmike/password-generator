@@ -20,7 +20,7 @@ function generatePassword() {
   var pwdLength = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
 
   // While the length is not between 8 - 128, don't proceed
-  while (pwdLength < 8 || pwdLength > 128 || typeof(pwdLength) != 'number') {
+  while (pwdLength < 8 || pwdLength > 128 || isNaN(pwdLength)) {
     alert("Whoops! Please enter a whole number between 8 - 128 and try again.");
     pwdLength = prompt("How long would like your new password to be? Please choose a whole numeric value between at least 8 characters and no more than 128 characters");
     if (pwdLength >= 8 && pwdLength <= 128) {
@@ -35,12 +35,12 @@ function generatePassword() {
   while (!yesNo.includes(lowercase)) {
     alert("Whoops! Please choose Yes or No (y/n)");
     lowercase = prompt("Would you like to require a lowercase character? (y/n)");
-    if (lowercase === "y" || lowercase === "Y" || lowercase === "n" || lowercase === "N") {
+    if (yesNo.includes(lowercase)) {
       break;
     }
   };
   
-  if (lowercase === "y" || lowercase === "Y") {
+  if (yes.includes(lowercase)) {
     pwdOptions.push(alphaLower);
   }
 
@@ -51,12 +51,12 @@ function generatePassword() {
   while (!yesNo.includes(uppercase)) {
     alert("Whoops! Please choose Yes or No (y/n)");
     uppercase = prompt("Would you like to require an Uppercase character? (y/n)");
-    if (uppercase === "y" || uppercase === "Y" || uppercase === "n" || uppercase === "N") {
+    if (yesNo.includes(uppercase)) {
       break;
     }
   };
 
-  if (uppercase === "y" || uppercase === "Y") {
+  if (yes.includes(uppercase)) {
     pwdOptions.push(alphaUpper);
   }
 
@@ -67,12 +67,12 @@ function generatePassword() {
   while (!yesNo.includes(numeric)) {
     alert("Whoops! Please choose Yes or No (y/n)");
     numeric = prompt("Would you like to require a numeric character? (y/n)");
-    if (numeric === "y" || numeric === "Y" || numeric === "n" || numeric === "N") {
+    if (yesNo.includes(numeric)) {
       break;
     }
   };
 
-  if (numeric === "y" || numeric === "Y") {
+  if (yes.includes(numeric)) {
     pwdOptions.push(numbers);
   }
 
@@ -83,39 +83,40 @@ function generatePassword() {
   while (!yesNo.includes(special)) {
     alert("Whoops! Please choose Yes or No (y/n)");
     special = prompt("Would you like to require a special character? (y/n)");
-    if (special === "y" || special === "Y" || special === "n" || special === "N") {
+    if (yesNo.includes(special)) {
       break;
     }
   };
 
-  if (special === "y" || special === "Y") {
+  if (yes.includes(special)) {
     pwdOptions.push(symbols);
   }
 
   pwdOptions = pwdOptions.join('');
 
   // While no character is chosen, don't proceed
-  if (!yes.includes(lowercase) || !yes.includes(uppercase) || !yes.includes(numeric) || !yes.includes(special)) {
+  if (!yes.includes(lowercase) && !yes.includes(uppercase) && !yes.includes(numeric) && !yes.includes(special)) {
     alert("Whoops! You need to choose at least one character type. Please try again.");
   } else {
+
     // Log stuff
-  console.log("Length:", pwdLength);
-  console.log("Lowercase:", lowercase);
-  console.log("Uppercase:", uppercase);
-  console.log("Numeric:", numeric);
-  console.log("Special:", special);
-  console.log("Options:", pwdOptions);
+    console.log("Length:", pwdLength);
+    console.log("Lowercase:", lowercase);
+    console.log("Uppercase:", uppercase);
+    console.log("Numeric:", numeric);
+    console.log("Special:", special);
+    console.log("Options:", pwdOptions);
 
-  // Create random string from pwdOptions
-  for (var i = 0; i <= pwdLength - 1; i++) {
-    var randomNumber = Math.floor(Math.random() * pwdOptions.length);
-    finalPassword += pwdOptions.substring(randomNumber, randomNumber +1);
-  }
+    // Create random string from pwdOptions
+    for (var i = 0; i <= pwdLength - 1; i++) {
+      var randomNumber = Math.floor(Math.random() * pwdOptions.length);
+      finalPassword += pwdOptions.substring(randomNumber, randomNumber +1);
+    }
 
-  console.log("Password:", finalPassword);
+    console.log("Password:", finalPassword);
 
-  // Trow success message
-  alert("Sick! Smash 'OK' to view your password.");
+    // Trow success message
+    alert("Sick! Smash 'OK' to view your password.");
   }
 };
 
