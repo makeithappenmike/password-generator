@@ -6,9 +6,9 @@ var numbers = "0123456789";
 var symbols = "!@#$%^&*_-+=";
 var chars = alphaUpper + alphaLower + numbers + symbols;
 var pwdOptions = [];
-var password = "";
+var finalPassword = "";
 
-function genPass() {
+function generatePassword() {
   
   // Initial prompt
   alert("You'd like a new password, eh? Let's define the criteria! Smash 'OK' to proceed.");
@@ -123,18 +123,18 @@ function genPass() {
   console.log("Special:", special);
   console.log("Options:", pwdOptions);
 
-  // Trow success message
-  alert("Sick! Smash 'OK' to view your password.");
-
-  console.log("Password:", password);
+  // console.log("Password:", password);
 
   // Create random string from pwdOptions
-  for (var i = 0; i <= passwordLength; i++) {
+  for (var i = 0; i <= pwdLength - 1; i++) {
     var randomNumber = Math.floor(Math.random() * pwdOptions.length);
-    password += pwdOptions.substring(randomNumber, randomNumber +1);
+    finalPassword += pwdOptions.substring(randomNumber, randomNumber +1);
   }
 
-  console.log("Password:", password);
+  console.log("Password:", finalPassword);
+
+  // Trow success message
+  alert("Sick! Smash 'OK' to view your password.");
 
 };
 
@@ -142,13 +142,17 @@ function genPass() {
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+function writePassword() {
+  document.getElementById("password").value = finalPassword;
+
+  // var password = generatePassword();
+  // var passwordText = document.querySelector("#password");
+
+  // passwordText.value = password;
 
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
