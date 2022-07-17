@@ -1,6 +1,5 @@
 // Assignment code here
-var yesNo = [
-  "y", "Y", "n", "N"];
+var yesNo = ["y", "Y", "n", "N"];
 var alphaLower = "abcdefghijklmnopqrstuvwxyz";
 var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
@@ -12,7 +11,6 @@ var password = "";
 function genPass() {
   
   // Initial prompt
-  console.log("A game is the foot! Let's go.");
   alert("You'd like a new password, eh? Let's define the criteria! Smash 'OK' to proceed.");
   
   // Length between 8 and 128
@@ -144,21 +142,13 @@ function genPass() {
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-var password = function writePassword(length) {
-  // var password = genPass();
+function writePassword() {
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
+  passwordText.value = password;
 
-//   // for (var i = 0; i <= length; i++) {
-//   //   var randomNumber = Math.floor(Math.random() * chars.length);
-//   //   password += chars.substring(randomNumber, randomNumber +1);
-//   // }
-//   console.log(password);
-//   document.getElementById("password").value = password;
-//   console.log(password);
-
-// }
+}
 
 // Add event listener to generate button
-}
+generateBtn.addEventListener("click", writePassword);
