@@ -120,6 +120,7 @@ function generatePassword() {
     // Trow success message
     alert("Sick! Smash 'OK' to view your password.");
   }
+  
 };
 
 // Get references to the #generate element
