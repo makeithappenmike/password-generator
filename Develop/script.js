@@ -18,28 +18,21 @@ function generatePassword() {
 
   // While the length is not between 8 - 128, don't proceed
   while (pwdLength < 8 || pwdLength > 128) {
-    // console.log("Need correction");
     alert("Whoops! Please enter a number between 8 - 128 and try again.");
     pwdLength = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
-    // console.log(length, "is not between 8-128");
     if (pwdLength >= 8 && pwdLength <= 128) {
-      // console.log("length set to", length);
       break;
     }
   };
-  console.log("Length:", pwdLength);
 
   // Lowercase character?
   var lowercase = prompt("Would you like to require a lowercase character? (y/n)");
 
   // While the answer is not y, Y, n, or N, don't proceed
   while (!yesNo.includes(lowercase)) {
-    // console.log("Need correction");
     alert("Whoops! Please choose Yes or No (y/n)");
     lowercase = prompt("Would you like to require a lowercase character? (y/n)");
-    // console.log(lowercase, "is not an option");
     if (lowercase === "y" || lowercase === "Y" || lowercase === "n" || lowercase === "N") {
-      // console.log("lowercase set to", lowercase);
       break;
     }
   };
@@ -47,20 +40,15 @@ function generatePassword() {
   if (lowercase === "y" || lowercase === "Y") {
     pwdOptions.push(alphaLower);
   }
-  console.log("Lowercase:", lowercase);
-  console.log(pwdOptions);
 
   // Uppercase character?
   var uppercase = prompt("Would you like to require an Uppercase character? (y/n)");
 
   // While the answer is not y, Y, n, or N, don't proceed
   while (!yesNo.includes(uppercase)) {
-    // console.log("Need correction");
     alert("Whoops! Please choose Yes or No (y/n)");
     uppercase = prompt("Would you like to require an Uppercase character? (y/n)");
-    // console.log(uppercase, "is not an option");
     if (uppercase === "y" || uppercase === "Y" || uppercase === "n" || uppercase === "N") {
-      // console.log("uppercase set to", uppercase);
       break;
     }
   };
@@ -68,20 +56,15 @@ function generatePassword() {
   if (uppercase === "y" || uppercase === "Y") {
     pwdOptions.push(alphaUpper);
   }
-  console.log("Uppercase:", uppercase);
 
   // Numeric character?
   var numeric = prompt("Would you like to require a numeric character? (y/n)");
-  console.log("Numeric:", numeric);
 
   // While the answer is not y, Y, n, or N, don't proceed
   while (!yesNo.includes(numeric)) {
-    // console.log("Need correction");
     alert("Whoops! Please choose Yes or No (y/n)");
     numeric = prompt("Would you like to require a numeric character? (y/n)");
-    // console.log(numeric, "is not an option");
     if (numeric === "y" || numeric === "Y" || numeric === "n" || numeric === "N") {
-      // console.log("numeric set to", numeric);
       break;
     }
   };
@@ -95,12 +78,9 @@ function generatePassword() {
 
   // While the answer is not y, Y, n, or N, don't proceed
   while (!yesNo.includes(special)) {
-    console.log("Need correction");
     alert("Whoops! Please choose Yes or No (y/n)");
     special = prompt("Would you like to require a special character? (y/n)");
-    // console.log(special, "is not an option");
     if (special === "y" || special === "Y" || special === "n" || special === "N") {
-      // console.log("special set to", special);
       break;
     }
   };
@@ -108,22 +88,18 @@ function generatePassword() {
   if (special === "y" || special === "Y") {
     pwdOptions.push(symbols);
   }
-  console.log("Special:", special + "/n");
 
   pwdOptions = pwdOptions.join('');
 
   // While no character is chosen, don't proceed
 
   // Log stuff
-  console.log("-------------------");
   console.log("Length:", pwdLength);
   console.log("Lowercase:", lowercase);
   console.log("Uppercase:", uppercase);
   console.log("Numeric:", numeric);
   console.log("Special:", special);
   console.log("Options:", pwdOptions);
-
-  // console.log("Password:", password);
 
   // Create random string from pwdOptions
   for (var i = 0; i <= pwdLength - 1; i++) {
@@ -142,15 +118,8 @@ function generatePassword() {
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-
 function writePassword() {
   document.getElementById("password").value = finalPassword;
-
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-
 }
 
 // Add event listener to generate button
