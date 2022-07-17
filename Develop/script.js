@@ -1,5 +1,7 @@
-// Assignment code here
-var yesNo = ["y", "Y", "n", "N"];
+// Defining our options
+var yes = ["y", "Y"];
+var no = ["n", "N"];
+var yesNo = [...yes, ...no];
 var alphaLower = "abcdefghijklmnopqrstuvwxyz";
 var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
@@ -8,6 +10,7 @@ var chars = alphaUpper + alphaLower + numbers + symbols;
 var pwdOptions = [];
 var finalPassword = "";
 
+// Beging generatePassword() -- this does basically everything
 function generatePassword() {
   
   // Initial prompt
@@ -17,9 +20,9 @@ function generatePassword() {
   var pwdLength = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
 
   // While the length is not between 8 - 128, don't proceed
-  while (pwdLength < 8 || pwdLength > 128) {
-    alert("Whoops! Please enter a number between 8 - 128 and try again.");
-    pwdLength = prompt("How long would like your new password to be? Please choose a numeric value between at least 8 characters and no more than 128 characters");
+  while (pwdLength < 8 || pwdLength > 128 || typeof(pwdLength) != 'number') {
+    alert("Whoops! Please enter a whole number between 8 - 128 and try again.");
+    pwdLength = prompt("How long would like your new password to be? Please choose a whole numeric value between at least 8 characters and no more than 128 characters");
     if (pwdLength >= 8 && pwdLength <= 128) {
       break;
     }
@@ -92,8 +95,10 @@ function generatePassword() {
   pwdOptions = pwdOptions.join('');
 
   // While no character is chosen, don't proceed
-
-  // Log stuff
+  if (!yes.includes(lowercase) || !yes.includes(uppercase) || !yes.includes(numeric) || !yes.includes(special)) {
+    alert("Whoops! You need to choose at least one character type. Please try again.");
+  } else {
+    // Log stuff
   console.log("Length:", pwdLength);
   console.log("Lowercase:", lowercase);
   console.log("Uppercase:", uppercase);
@@ -111,7 +116,7 @@ function generatePassword() {
 
   // Trow success message
   alert("Sick! Smash 'OK' to view your password.");
-
+  }
 };
 
 // Get references to the #generate element
