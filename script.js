@@ -100,6 +100,7 @@ function generatePassword() {
   // While no character is chosen, don't proceed
   if (!yes.includes(lowercase) && !yes.includes(uppercase) && !yes.includes(numeric) && !yes.includes(special)) {
     alert("Whoops! You need to choose at least one character type. Please try again.");
+    reload();
   } else {
 
     // Create random string from pwdOptions
