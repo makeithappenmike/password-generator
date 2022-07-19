@@ -17,6 +17,8 @@ generateBtn.addEventListener("click", writePassword);
 
 // Beging generatePassword() -- this does basically everything
 function generatePassword() {
+
+  // Resetting these to empty to account for re-tries
   finalPassword = "";
   pwdOptions = [];
   
@@ -47,9 +49,9 @@ function generatePassword() {
     }
   };
   
+  // If they want lowercase, add those options to our final string
   if (lowercase == "y" || lowercase == "Y") {
     pwdOptions.push(alphaLower);
-    // console.log(pwdOptions);
   }
 
   // Uppercase character?
@@ -64,9 +66,9 @@ function generatePassword() {
     }
   };
 
+  // If they want uppercase, add those options to our final string
   if (uppercase == "y" || uppercase == "Y") {
     pwdOptions.push(alphaUpper);
-    // console.log(pwdOptions);
   }
 
   // Numeric character?
@@ -81,9 +83,9 @@ function generatePassword() {
     }
   };
 
+  // If they want numeric, add those options to our final string
   if (numeric == "y" || numeric == "Y") {
     pwdOptions.push(numbers);
-    // console.log(pwdOptions);
   }
 
   // Special character?
@@ -98,12 +100,12 @@ function generatePassword() {
     }
   };
 
+  // If they want special characters, add those options to our final string
   if (special == "y" || special == "Y") {
     pwdOptions.push(symbols);
-    // console.log(pwdOptions);
   }
 
-  // While no character is chosen, don't proceed
+  // While no character is chosen, don't proceed -- restart the process
   if (!yes.includes(lowercase) && !yes.includes(uppercase) && !yes.includes(numeric) && !yes.includes(special)) {
     alert("Whoops! You need to choose at least one character type. Please try again.");
     generatePassword();
@@ -135,9 +137,9 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
+
+  // Incase it isn't empty (on a retry) -- reset
   document.getElementById("password").value = "";
   document.getElementById("password").value = finalPassword;
-
-  
 }
 
