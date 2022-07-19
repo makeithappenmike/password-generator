@@ -16,4 +16,8 @@ Contributions by Michael Martens
 
 Screenshot:
 
-<img src="Assets/screenshot.png" alt="screenshot of password generator" />
+<img src="assets/app_before.png" alt="screenshot of password generator" />
+<br>
+<img src="assets/app_during.png" alt="screenshot of password generator" />
+<br>
+<img src="assets/app_after.png" alt="screenshot of password generator" />
