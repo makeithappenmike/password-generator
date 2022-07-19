@@ -6,11 +6,19 @@ var alphaLower = "abcdefghijklmnopqrstuvwxyz";
 var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var symbols = "!@#$%^&*_-+=";
-var pwdOptions = [];
 var finalPassword = "";
+var pwdOptions = [];
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // Beging generatePassword() -- this does basically everything
 function generatePassword() {
+  finalPassword = "";
+  pwdOptions = [];
   
   // Initial prompt
   alert("You'd like a new password, eh? Let's define the criteria! Smash 'OK' to proceed.");
@@ -41,7 +49,7 @@ function generatePassword() {
   
   if (lowercase == "y" || lowercase == "Y") {
     pwdOptions.push(alphaLower);
-    console.log(pwdOptions);
+    // console.log(pwdOptions);
   }
 
   // Uppercase character?
@@ -58,7 +66,7 @@ function generatePassword() {
 
   if (uppercase == "y" || uppercase == "Y") {
     pwdOptions.push(alphaUpper);
-    console.log(pwdOptions);
+    // console.log(pwdOptions);
   }
 
   // Numeric character?
@@ -75,7 +83,7 @@ function generatePassword() {
 
   if (numeric == "y" || numeric == "Y") {
     pwdOptions.push(numbers);
-    console.log(pwdOptions);
+    // console.log(pwdOptions);
   }
 
   // Special character?
@@ -92,18 +100,20 @@ function generatePassword() {
 
   if (special == "y" || special == "Y") {
     pwdOptions.push(symbols);
-    console.log(pwdOptions);
+    // console.log(pwdOptions);
   }
-
-  pwdOptions = pwdOptions.join('');
 
   // While no character is chosen, don't proceed
   if (!yes.includes(lowercase) && !yes.includes(uppercase) && !yes.includes(numeric) && !yes.includes(special)) {
     alert("Whoops! You need to choose at least one character type. Please try again.");
+    generatePassword();
   } else {
 
+    // Join all options to loop through
+    pwdOptions = pwdOptions.join('');
+
     // Create random string from pwdOptions
-    for (var i = 0; i <= pwdLength - 1; i++) {
+    for (var i = 0; i < pwdLength; i++) {
       var randomNumber = Math.floor(Math.random() * pwdOptions.length);
       finalPassword += pwdOptions.substring(randomNumber, randomNumber +1);
     }
@@ -123,14 +133,11 @@ function generatePassword() {
   
 };
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 function writePassword() {
+  document.getElementById("password").value = "";
   document.getElementById("password").value = finalPassword;
-}
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+  
+}
 
