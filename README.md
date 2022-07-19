@@ -10,10 +10,10 @@ There are a few things working behind the scenes past that to add some validatio
 - User's must opt to include at least one type of characters, picking from lowercase, Uppercase, numeric, and special characters
 - If they don't chose "y" or "Y" to any of those, they have to try again.
 
-View the site here: https://makeithappenmike.github.io/password-generator/
+View the site here: <https://makeithappenmike.github.io/password-generator/>
 
 Contributions by Michael Martens
 
 Screenshot:
 
-<img src="Develop/Assets/screenshot.png" alt="screenshot of password generator" />
+<img src="Assets/screenshot.png" alt="screenshot of password generator" />
