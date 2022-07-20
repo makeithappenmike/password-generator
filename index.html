@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+  <!-- Begin Head -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +9,11 @@
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
+  <!-- Begin Boddy -->
   <body>
+
+    <!-- Begin Wrapper -->
     <section class="wrapper">
       <header>
         <h1>Password Generator</h1>
@@ -17,6 +23,8 @@
           <h2>Generate a Password</h2>
         </section>
         <section class="card-body">
+
+          <!-- Begin Form Field -->
           <textarea
             readonly
             id="password"
@@ -24,11 +32,17 @@
             aria-label="Generated Password"
           ></textarea>
         </section>
+
+        <!-- Begin Footer -->
         <footer class="card-footer">
+
+          <!-- Magic made possible by this button -->
           <button id="generate" class="btn" onclick="generatePassword()">Generate Password</button>
         </footer>
       </section>
     </section>
+
+    <!-- Begin script imports -->
     <script src="script.js"></script>
   </body>
 </html>
