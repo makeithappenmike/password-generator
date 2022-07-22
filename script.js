@@ -121,13 +121,13 @@ function generatePassword() {
     }
 
     // Log stuff
-    console.log("Length:", pwdLength);
-    console.log("Lowercase:", lowercase);
-    console.log("Uppercase:", uppercase);
-    console.log("Numeric:", numeric);
-    console.log("Special:", special);
-    console.log("Options:", pwdOptions);
-    console.log("Password:", finalPassword);
+    // console.log("Length:", pwdLength);
+    // console.log("Lowercase:", lowercase);
+    // console.log("Uppercase:", uppercase);
+    // console.log("Numeric:", numeric);
+    // console.log("Special:", special);
+    // console.log("Options:", pwdOptions);
+    // console.log("Password:", finalPassword);
 
     // Trow success message
     alert("Sick! Smash 'OK' to view your password.");
