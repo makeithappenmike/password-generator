@@ -7,7 +7,7 @@ Index.html houses the main structure of the page. Style.css handles the styling 
 There are a few things working behind the scenes past that to add some validation -- here's the gist:
 
 - The length of the password needs to be between 8 - 128 characters
-- User's must opt to include at least one type of characters, picking from lowercase, Uppercase, numeric, and special characters
+- Users must opt to include at least one type of character, picking from lowercase, Uppercase, numeric, and special characters
 - If they don't chose "y" or "Y" to any of those, they have to try again.
 
 View the site here: <https://makeithappenmike.github.io/password-generator/>
